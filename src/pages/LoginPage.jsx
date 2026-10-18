@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
-import { Shield, Lock, Mail, AlertCircle, Loader2 } from 'lucide-react'
+import { Shield, Lock, Mail, AlertCircle, Loader2, Sun, Moon } from 'lucide-react'
 import { useAuth } from '../context/AuthContext'
+import { useTheme } from '../context/ThemeContext'
 
 export default function LoginPage() {
   const [email, setEmail] = useState('')
@@ -10,6 +11,7 @@ export default function LoginPage() {
   const [isSubmitting, setIsSubmitting] = useState(false)
 
   const { signIn, session } = useAuth()
+  const { theme, toggleTheme } = useTheme()
   const navigate = useNavigate()
   const location = useLocation()
 
@@ -57,12 +59,30 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-950 flex flex-col items-center justify-center p-4">
-      {/* Top Banner */}
-      <div className="absolute top-0 inset-x-0 bg-amber-500/10 border-b border-amber-500/20 py-1 px-4 text-center">
-        <span className="text-[11px] font-mono font-bold tracking-widest text-amber-400 uppercase">
+    <div className="min-h-screen bg-slate-950 flex flex-col items-center justify-center p-4 transition-colors duration-300">
+      {/* Top Banner with Theme Switcher */}
+      <div className="absolute top-0 inset-x-0 bg-amber-500/10 border-b border-amber-500/20 py-1.5 px-4 flex items-center justify-between">
+        <div className="w-16"></div>
+        <span className="text-[11px] font-mono font-bold tracking-widest text-amber-500 dark:text-amber-400 uppercase text-center flex-1">
           SYNTHETIC - UNCLASSIFIED
         </span>
+        <button
+          onClick={toggleTheme}
+          title={`Switch to ${theme === 'dark' ? 'Light' : 'Dark'} Mode`}
+          className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-semibold bg-slate-900 border border-slate-800 text-slate-300 hover:text-emerald-400 transition-all duration-300 cursor-pointer shadow-sm"
+        >
+          {theme === 'dark' ? (
+            <>
+              <Sun className="w-3 h-3 text-amber-400" />
+              <span>LIGHT</span>
+            </>
+          ) : (
+            <>
+              <Moon className="w-3 h-3 text-indigo-400" />
+              <span>DARK</span>
+            </>
+          )}
+        </button>
       </div>
 
       <div className="w-full max-w-md bg-slate-900 border border-slate-800 rounded-2xl p-8 shadow-2xl transition-all duration-300 hover:border-slate-700">

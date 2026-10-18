@@ -12,8 +12,11 @@ import {
   LogOut,
   User,
   Radio,
+  Sun,
+  Moon,
 } from 'lucide-react'
 import { useAuth } from '../context/AuthContext'
+import { useTheme } from '../context/ThemeContext'
 
 // Badge styling and labels for each role
 const ROLE_CONFIG = {
@@ -40,10 +43,6 @@ const ROLE_CONFIG = {
 }
 
 // All available pages and which roles can access them
-// - Overview & Alerts: all authenticated users
-// - What-If: commander, logistics_officer, post_commander
-// - Reports: commander, logistics_officer, viewer
-// - Copilot AI: commander, logistics_officer
 const ALL_NAV_ITEMS = [
   {
     name: 'Overview',
@@ -80,6 +79,7 @@ const ALL_NAV_ITEMS = [
 export default function Layout() {
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const { role, profile, user, signOut } = useAuth()
+  const { theme, toggleTheme } = useTheme()
   const navigate = useNavigate()
 
   const roleMeta = ROLE_CONFIG[role] || ROLE_CONFIG.viewer
@@ -95,12 +95,31 @@ export default function Layout() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col font-sans">
-      {/* Small Banner */}
-      <div className="w-full bg-amber-500/10 border-b border-amber-500/20 py-1 px-4 text-center">
-        <span className="text-[11px] font-mono font-bold tracking-widest text-amber-400 uppercase">
+    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col font-sans transition-colors duration-300">
+      {/* Top Banner with Embedded Theme Toggle */}
+      <div className="w-full bg-amber-500/10 border-b border-amber-500/20 py-1 px-4 flex items-center justify-between">
+        <div className="w-20 hidden sm:block"></div>
+        <div className="text-[11px] font-mono font-bold tracking-widest text-amber-500 dark:text-amber-400 uppercase text-center flex-1">
           SYNTHETIC - UNCLASSIFIED
-        </span>
+        </div>
+        {/* Header Theme Switcher */}
+        <button
+          onClick={toggleTheme}
+          title={`Switch to ${theme === 'dark' ? 'Light' : 'Dark'} Mode`}
+          className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-semibold bg-slate-900 border border-slate-800 text-slate-300 hover:text-emerald-400 hover:border-emerald-500/60 transition-all duration-300 cursor-pointer shadow-sm"
+        >
+          {theme === 'dark' ? (
+            <>
+              <Sun className="w-3 h-3 text-amber-400" />
+              <span>LIGHT</span>
+            </>
+          ) : (
+            <>
+              <Moon className="w-3 h-3 text-indigo-400" />
+              <span>DARK</span>
+            </>
+          )}
+        </button>
       </div>
 
       <div className="flex-1 flex flex-col md:flex-row">
@@ -112,34 +131,61 @@ export default function Layout() {
               Command HQ
             </span>
           </div>
-          <button
-            onClick={() => setSidebarOpen(!sidebarOpen)}
-            className="p-1.5 rounded-lg bg-slate-800 text-slate-300"
-          >
-            {sidebarOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-          </button>
+          <div className="flex items-center gap-2">
+            <button
+              onClick={toggleTheme}
+              className="p-1.5 rounded-lg bg-slate-800 text-slate-300"
+            >
+              {theme === 'dark' ? (
+                <Sun className="w-4 h-4 text-amber-400" />
+              ) : (
+                <Moon className="w-4 h-4 text-indigo-400" />
+              )}
+            </button>
+            <button
+              onClick={() => setSidebarOpen(!sidebarOpen)}
+              className="p-1.5 rounded-lg bg-slate-800 text-slate-300"
+            >
+              {sidebarOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            </button>
+          </div>
         </div>
 
         {/* Left Sidebar */}
         <aside
-          className={`fixed inset-y-0 left-0 z-40 w-64 bg-slate-900 border-r border-slate-800 transform md:relative md:translate-x-0 transition-transform duration-300 ease-in-out flex flex-col ${
+          className={`fixed inset-y-0 left-0 z-40 w-64 bg-slate-900 border-r border-slate-800 transform md:relative md:translate-x-0 transition-all duration-300 ease-in-out flex flex-col ${
             sidebarOpen ? 'translate-x-0' : '-translate-x-0 max-md:-translate-x-full'
           }`}
         >
           {/* Brand header */}
-          <div className="p-5 border-b border-slate-800 flex items-center gap-3">
-            <div className="w-9 h-9 rounded-lg bg-emerald-950 border border-emerald-500/30 flex items-center justify-center text-emerald-400 shadow-md">
-              <Shield className="w-5 h-5" />
-            </div>
-            <div>
-              <div className="font-bold text-sm tracking-wider uppercase text-slate-100 flex items-center gap-1.5">
-                <span>Rasad HQ</span>
-                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          <div className="p-5 border-b border-slate-800 flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div className="w-9 h-9 rounded-lg bg-emerald-950 border border-emerald-500/30 flex items-center justify-center text-emerald-400 shadow-md">
+                <Shield className="w-5 h-5" />
               </div>
-              <div className="text-[10px] text-slate-500 font-mono tracking-widest uppercase">
-                Tactical Terminal
+              <div>
+                <div className="font-bold text-sm tracking-wider uppercase text-slate-100 flex items-center gap-1.5">
+                  <span>Rasad HQ</span>
+                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                </div>
+                <div className="text-[10px] text-slate-500 font-mono tracking-widest uppercase">
+                  Tactical Terminal
+                </div>
               </div>
             </div>
+
+            {/* Sidebar Quick Theme Toggle */}
+            <button
+              onClick={toggleTheme}
+              title={`Switch to ${theme === 'dark' ? 'Light' : 'Dark'} Mode`}
+              className="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition-colors cursor-pointer"
+            >
+              {theme === 'dark' ? (
+                <Sun className="w-4 h-4 text-amber-400" />
+              ) : (
+                <Moon className="w-4 h-4 text-indigo-400" />
+              )}
+            </button>
           </div>
 
           {/* User profile & Role Badge */}
