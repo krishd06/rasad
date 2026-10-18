@@ -1,0 +1,10 @@
+{
+  "model_name": "GradientBoosting Seasonal Forecaster",
+  "forecast_horizon_days": 14,
+  "baseline_method": "Last-Week Seasonal Naive (7-Day Lag)",
+  "evaluation_metric": "Mean Absolute Error (MAE)",
+  "model_mae": 33.78,
+  "baseline_mae": 43.02,
+  "improvement_percentage": 21.5,
+  "summary": "The ML forecast outperforms the naive last-week baseline by 21.5% lower error."
+}

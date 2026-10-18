@@ -1,0 +1,29 @@
+[
+  {
+    "id": "D01",
+    "name": "Zojila Base Logistics Hub",
+    "latitude": 34.285,
+    "longitude": 75.312,
+    "altitude_m": 2740,
+    "capacity_tons": 5000,
+    "status": "OPERATIONAL"
+  },
+  {
+    "id": "D02",
+    "name": "Shyok Forward Staging Depot",
+    "latitude": 34.62,
+    "longitude": 76.15,
+    "altitude_m": 3120,
+    "capacity_tons": 3500,
+    "status": "OPERATIONAL"
+  },
+  {
+    "id": "D03",
+    "name": "Nubra Valley Central Store",
+    "latitude": 34.885,
+    "longitude": 77.21,
+    "altitude_m": 3048,
+    "capacity_tons": 4200,
+    "status": "OPERATIONAL"
+  }
+]

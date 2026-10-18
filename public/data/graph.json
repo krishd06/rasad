@@ -1,0 +1,371 @@
+{
+  "total_nodes": 25,
+  "total_routes": 21,
+  "passes": [
+    {
+      "id": "PASS-01",
+      "name": "Khardung La Pass",
+      "altitude_m": 5359,
+      "risk_level": "EXTREME",
+      "snow_closure_months": [
+        11,
+        12,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "id": "PASS-02",
+      "name": "Chang La Pass",
+      "altitude_m": 5360,
+      "risk_level": "HIGH",
+      "snow_closure_months": [
+        12,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "id": "PASS-03",
+      "name": "Marsimik La Pass",
+      "altitude_m": 5582,
+      "risk_level": "CRITICAL",
+      "snow_closure_months": [
+        11,
+        12,
+        1,
+        2,
+        3,
+        4
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "id": "D01",
+      "name": "Zojila Base Logistics Hub",
+      "type": "depot",
+      "lat": 34.285,
+      "lon": 75.312
+    },
+    {
+      "id": "D02",
+      "name": "Shyok Forward Staging Depot",
+      "type": "depot",
+      "lat": 34.62,
+      "lon": 76.15
+    },
+    {
+      "id": "D03",
+      "name": "Nubra Valley Central Store",
+      "type": "depot",
+      "lat": 34.885,
+      "lon": 77.21
+    },
+    {
+      "id": "P01",
+      "name": "Karakoram Ridge",
+      "type": "post",
+      "lat": 34.7091,
+      "lon": 75.055
+    },
+    {
+      "id": "P02",
+      "name": "Siachen Vanguard",
+      "type": "post",
+      "lat": 34.3829,
+      "lon": 75.0656
+    },
+    {
+      "id": "P03",
+      "name": "Changla Outpost",
+      "type": "post",
+      "lat": 34.0807,
+      "lon": 76.2964
+    },
+    {
+      "id": "P04",
+      "name": "Daulat Sector",
+      "type": "post",
+      "lat": 34.2549,
+      "lon": 75.204
+    },
+    {
+      "id": "P05",
+      "name": "Galwan Watch",
+      "type": "post",
+      "lat": 35.2097,
+      "lon": 75.8328
+    },
+    {
+      "id": "P06",
+      "name": "Rezang Bastion",
+      "type": "post",
+      "lat": 34.7419,
+      "lon": 76.7008
+    },
+    {
+      "id": "P07",
+      "name": "Spanggur Fortress",
+      "type": "post",
+      "lat": 34.3053,
+      "lon": 75.4609
+    },
+    {
+      "id": "P08",
+      "name": "Kaksar Horizon",
+      "type": "post",
+      "lat": 33.9951,
+      "lon": 75.8348
+    },
+    {
+      "id": "P09",
+      "name": "Dras Heights",
+      "type": "post",
+      "lat": 34.3517,
+      "lon": 75.1456
+    },
+    {
+      "id": "P10",
+      "name": "Batalik Redoubt",
+      "type": "post",
+      "lat": 34.1199,
+      "lon": 76.235
+    },
+    {
+      "id": "P11",
+      "name": "Chorbat Sentinel",
+      "type": "post",
+      "lat": 34.5143,
+      "lon": 75.2
+    },
+    {
+      "id": "P12",
+      "name": "Sub-Sector Haneef",
+      "type": "post",
+      "lat": 34.3224,
+      "lon": 77.1915
+    },
+    {
+      "id": "PASS-01",
+      "name": "Khardung La Pass",
+      "type": "pass",
+      "lat": 34.6648,
+      "lon": 76.0601
+    },
+    {
+      "id": "PASS-02",
+      "name": "Chang La Pass",
+      "type": "pass",
+      "lat": 34.7064,
+      "lon": 75.9669
+    },
+    {
+      "id": "PASS-03",
+      "name": "Marsimik La Pass",
+      "type": "pass",
+      "lat": 34.6239,
+      "lon": 76.1722
+    },
+    {
+      "id": "CP-ALPHA",
+      "name": "Sultan Chusku Junction",
+      "type": "checkpoint",
+      "lat": 34.42,
+      "lon": 75.95
+    },
+    {
+      "id": "CP-BRAVO",
+      "name": "Tangtse Fork",
+      "type": "checkpoint",
+      "lat": 34.55,
+      "lon": 76.45
+    },
+    {
+      "id": "CP-CHARLIE",
+      "name": "Chushul Crossing",
+      "type": "checkpoint",
+      "lat": 34.22,
+      "lon": 76.7
+    },
+    {
+      "id": "CP-DELTA",
+      "name": "Murgo Transit Base",
+      "type": "checkpoint",
+      "lat": 34.78,
+      "lon": 76.85
+    },
+    {
+      "id": "CP-ECHO",
+      "name": "Shyok Bridge Checkpost",
+      "type": "checkpoint",
+      "lat": 34.69,
+      "lon": 76.32
+    },
+    {
+      "id": "CP-FOXTROT",
+      "name": "Sasoma Convoy Point",
+      "type": "checkpoint",
+      "lat": 34.92,
+      "lon": 77.05
+    },
+    {
+      "id": "CP-GOLF",
+      "name": "Durbuk Convoy Staging",
+      "type": "checkpoint",
+      "lat": 34.39,
+      "lon": 76.52
+    }
+  ],
+  "routes": [
+    {
+      "from": "D01",
+      "to": "CP-ALPHA",
+      "distance_km": 42.5,
+      "difficulty": 1.4,
+      "pass": null
+    },
+    {
+      "from": "D02",
+      "to": "CP-ECHO",
+      "distance_km": 31.0,
+      "difficulty": 1.6,
+      "pass": null
+    },
+    {
+      "from": "D03",
+      "to": "CP-FOXTROT",
+      "distance_km": 28.5,
+      "difficulty": 1.8,
+      "pass": null
+    },
+    {
+      "from": "CP-ALPHA",
+      "to": "CP-BRAVO",
+      "distance_km": 54.0,
+      "difficulty": 2.1,
+      "pass": "PASS-01"
+    },
+    {
+      "from": "CP-BRAVO",
+      "to": "CP-GOLF",
+      "distance_km": 22.0,
+      "difficulty": 1.5,
+      "pass": null
+    },
+    {
+      "from": "CP-GOLF",
+      "to": "CP-CHARLIE",
+      "distance_km": 61.0,
+      "difficulty": 2.4,
+      "pass": "PASS-02"
+    },
+    {
+      "from": "CP-BRAVO",
+      "to": "CP-DELTA",
+      "distance_km": 72.0,
+      "difficulty": 2.9,
+      "pass": "PASS-03"
+    },
+    {
+      "from": "CP-ECHO",
+      "to": "CP-DELTA",
+      "distance_km": 48.0,
+      "difficulty": 2.2,
+      "pass": null
+    },
+    {
+      "from": "CP-FOXTROT",
+      "to": "CP-DELTA",
+      "distance_km": 39.0,
+      "difficulty": 2.5,
+      "pass": null
+    },
+    {
+      "from": "CP-ALPHA",
+      "to": "P01",
+      "distance_km": 90.9,
+      "difficulty": 3.1,
+      "pass": "PASS-02"
+    },
+    {
+      "from": "CP-BRAVO",
+      "to": "P02",
+      "distance_km": 132.8,
+      "difficulty": 3.0,
+      "pass": null
+    },
+    {
+      "from": "CP-CHARLIE",
+      "to": "P03",
+      "distance_km": 41.3,
+      "difficulty": 2.2,
+      "pass": null
+    },
+    {
+      "from": "CP-DELTA",
+      "to": "P04",
+      "distance_km": 166.9,
+      "difficulty": 2.5,
+      "pass": null
+    },
+    {
+      "from": "CP-ECHO",
+      "to": "P05",
+      "distance_km": 74.0,
+      "difficulty": 2.1,
+      "pass": "PASS-02"
+    },
+    {
+      "from": "CP-FOXTROT",
+      "to": "P06",
+      "distance_km": 38.6,
+      "difficulty": 3.1,
+      "pass": "PASS-01"
+    },
+    {
+      "from": "CP-GOLF",
+      "to": "P07",
+      "distance_km": 101.1,
+      "difficulty": 3.0,
+      "pass": null
+    },
+    {
+      "from": "CP-ALPHA",
+      "to": "P08",
+      "distance_km": 48.4,
+      "difficulty": 2.2,
+      "pass": null
+    },
+    {
+      "from": "CP-BRAVO",
+      "to": "P09",
+      "distance_km": 125.9,
+      "difficulty": 2.7,
+      "pass": "PASS-02"
+    },
+    {
+      "from": "CP-CHARLIE",
+      "to": "P10",
+      "distance_km": 45.6,
+      "difficulty": 2.7,
+      "pass": null
+    },
+    {
+      "from": "CP-DELTA",
+      "to": "P11",
+      "distance_km": 159.5,
+      "difficulty": 2.0,
+      "pass": "PASS-01"
+    },
+    {
+      "from": "CP-ECHO",
+      "to": "P12",
+      "distance_km": 92.3,
+      "difficulty": 2.9,
+      "pass": null
+    }
+  ]
+}

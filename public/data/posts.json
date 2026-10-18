@@ -1,0 +1,182 @@
+[
+  {
+    "id": "P01",
+    "name": "Karakoram Ridge",
+    "latitude": 34.7091,
+    "longitude": 75.055,
+    "altitude_m": 4526,
+    "soldiers": 66,
+    "current_stock": {
+      "food": 3451.7,
+      "fuel": 9723.3,
+      "ammunition": 2770.2,
+      "medicine": 962.3,
+      "spare_parts": 495.8
+    }
+  },
+  {
+    "id": "P02",
+    "name": "Siachen Vanguard",
+    "latitude": 34.3829,
+    "longitude": 75.0656,
+    "altitude_m": 4295,
+    "soldiers": 64,
+    "current_stock": {
+      "food": 4746.6,
+      "fuel": 3794.6,
+      "ammunition": 1548.6,
+      "medicine": 764.9,
+      "spare_parts": 889.7
+    }
+  },
+  {
+    "id": "P03",
+    "name": "Changla Outpost",
+    "latitude": 34.0807,
+    "longitude": 76.2964,
+    "altitude_m": 3426,
+    "soldiers": 132,
+    "current_stock": {
+      "food": 12863.5,
+      "fuel": 18819.1,
+      "ammunition": 3888.4,
+      "medicine": 869.5,
+      "spare_parts": 2594.2
+    }
+  },
+  {
+    "id": "P04",
+    "name": "Daulat Sector",
+    "latitude": 34.2549,
+    "longitude": 75.204,
+    "altitude_m": 3796,
+    "soldiers": 80,
+    "current_stock": {
+      "food": 8054.5,
+      "fuel": 10469.0,
+      "ammunition": 3746.0,
+      "medicine": 1025.4,
+      "spare_parts": 1102.4
+    }
+  },
+  {
+    "id": "P05",
+    "name": "Galwan Watch",
+    "latitude": 35.2097,
+    "longitude": 75.8328,
+    "altitude_m": 4600,
+    "soldiers": 141,
+    "current_stock": {
+      "food": 11804.5,
+      "fuel": 23377.2,
+      "ammunition": 4265.6,
+      "medicine": 985.1,
+      "spare_parts": 1025.1
+    }
+  },
+  {
+    "id": "P06",
+    "name": "Rezang Bastion",
+    "latitude": 34.7419,
+    "longitude": 76.7008,
+    "altitude_m": 3726,
+    "soldiers": 144,
+    "current_stock": {
+      "food": 7637.9,
+      "fuel": 9867.5,
+      "ammunition": 3908.2,
+      "medicine": 1698.8,
+      "spare_parts": 1640.1
+    }
+  },
+  {
+    "id": "P07",
+    "name": "Spanggur Fortress",
+    "latitude": 34.3053,
+    "longitude": 75.4609,
+    "altitude_m": 4493,
+    "soldiers": 124,
+    "current_stock": {
+      "food": 13341.3,
+      "fuel": 16908.2,
+      "ammunition": 4893.0,
+      "medicine": 837.8,
+      "spare_parts": 2042.4
+    }
+  },
+  {
+    "id": "P08",
+    "name": "Kaksar Horizon",
+    "latitude": 33.9951,
+    "longitude": 75.8348,
+    "altitude_m": 4299,
+    "soldiers": 122,
+    "current_stock": {
+      "food": 7336.1,
+      "fuel": 18455.0,
+      "ammunition": 2303.5,
+      "medicine": 1685.6,
+      "spare_parts": 2138.7
+    }
+  },
+  {
+    "id": "P09",
+    "name": "Dras Heights",
+    "latitude": 34.3517,
+    "longitude": 75.1456,
+    "altitude_m": 4688,
+    "soldiers": 62,
+    "current_stock": {
+      "food": 5319.4,
+      "fuel": 6513.6,
+      "ammunition": 3150.9,
+      "medicine": 612.5,
+      "spare_parts": 619.7
+    }
+  },
+  {
+    "id": "P10",
+    "name": "Batalik Redoubt",
+    "latitude": 34.1199,
+    "longitude": 76.235,
+    "altitude_m": 4476,
+    "soldiers": 130,
+    "current_stock": {
+      "food": 10439.7,
+      "fuel": 21752.9,
+      "ammunition": 4115.5,
+      "medicine": 946.4,
+      "spare_parts": 2628.0
+    }
+  },
+  {
+    "id": "P11",
+    "name": "Chorbat Sentinel",
+    "latitude": 34.5143,
+    "longitude": 75.2,
+    "altitude_m": 3592,
+    "soldiers": 145,
+    "current_stock": {
+      "food": 6307.2,
+      "fuel": 19401.5,
+      "ammunition": 6708.5,
+      "medicine": 1374.7,
+      "spare_parts": 1042.0
+    }
+  },
+  {
+    "id": "P12",
+    "name": "Sub-Sector Haneef",
+    "latitude": 34.3224,
+    "longitude": 77.1915,
+    "altitude_m": 5567,
+    "soldiers": 67,
+    "current_stock": {
+      "food": 7387.3,
+      "fuel": 10903.4,
+      "ammunition": 1154.2,
+      "medicine": 852.2,
+      "spare_parts": 1059.3
+    }
+  }
+]

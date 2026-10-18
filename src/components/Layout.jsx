@@ -1,30 +1,98 @@
 import React, { useState } from 'react'
-import { NavLink, Outlet, useLocation } from 'react-router-dom'
+import { NavLink, Outlet, useNavigate } from 'react-router-dom'
 import {
   LayoutDashboard,
   Cpu,
   AlertTriangle,
   FileText,
   Bot,
-  LogIn,
   Shield,
   Menu,
   X,
+  LogOut,
+  User,
   Radio,
 } from 'lucide-react'
+import { useAuth } from '../context/AuthContext'
 
-const navItems = [
-  { name: 'Overview', path: '/', icon: LayoutDashboard },
-  { name: 'What-If Simulation', path: '/what-if', icon: Cpu },
-  { name: 'Alerts & Incidents', path: '/alerts', icon: AlertTriangle },
-  { name: 'Reports', path: '/reports', icon: FileText },
-  { name: 'Copilot AI', path: '/copilot', icon: Bot },
-  { name: 'Authentication', path: '/login', icon: LogIn },
+// Badge styling and labels for each role
+const ROLE_CONFIG = {
+  commander: {
+    label: 'Commander',
+    color: 'bg-emerald-950 text-emerald-400 border-emerald-800/80',
+    dot: 'bg-emerald-400',
+  },
+  logistics_officer: {
+    label: 'Logistics Officer',
+    color: 'bg-cyan-950 text-cyan-400 border-cyan-800/80',
+    dot: 'bg-cyan-400',
+  },
+  post_commander: {
+    label: 'Post Commander',
+    color: 'bg-amber-950 text-amber-400 border-amber-800/80',
+    dot: 'bg-amber-400',
+  },
+  viewer: {
+    label: 'Viewer',
+    color: 'bg-slate-800 text-slate-300 border-slate-700',
+    dot: 'bg-slate-400',
+  },
+}
+
+// All available pages and which roles can access them
+// - Overview & Alerts: all authenticated users
+// - What-If: commander, logistics_officer, post_commander
+// - Reports: commander, logistics_officer, viewer
+// - Copilot AI: commander, logistics_officer
+const ALL_NAV_ITEMS = [
+  {
+    name: 'Overview',
+    path: '/',
+    icon: LayoutDashboard,
+    roles: ['commander', 'logistics_officer', 'post_commander', 'viewer'],
+  },
+  {
+    name: 'What-If Simulation',
+    path: '/what-if',
+    icon: Cpu,
+    roles: ['commander', 'logistics_officer', 'post_commander'],
+  },
+  {
+    name: 'Alerts & Incidents',
+    path: '/alerts',
+    icon: AlertTriangle,
+    roles: ['commander', 'logistics_officer', 'post_commander', 'viewer'],
+  },
+  {
+    name: 'Reports',
+    path: '/reports',
+    icon: FileText,
+    roles: ['commander', 'logistics_officer', 'viewer'],
+  },
+  {
+    name: 'Copilot AI',
+    path: '/copilot',
+    icon: Bot,
+    roles: ['commander', 'logistics_officer'],
+  },
 ]
 
 export default function Layout() {
   const [sidebarOpen, setSidebarOpen] = useState(false)
-  const location = useLocation()
+  const { role, profile, user, signOut } = useAuth()
+  const navigate = useNavigate()
+
+  const roleMeta = ROLE_CONFIG[role] || ROLE_CONFIG.viewer
+
+  // Filter navigation items based on the user's role
+  const visibleNavItems = ALL_NAV_ITEMS.filter((item) =>
+    item.roles.includes(role)
+  )
+
+  const handleSignOut = async () => {
+    await signOut()
+    navigate('/login')
+  }
 
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col font-sans">
@@ -74,9 +142,36 @@ export default function Layout() {
             </div>
           </div>
 
-          {/* Nav links */}
+          {/* User profile & Role Badge */}
+          <div className="p-4 border-b border-slate-800/80 bg-slate-950/40">
+            <div className="flex items-center gap-2.5 mb-2">
+              <div className="w-8 h-8 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center text-slate-300 shrink-0">
+                <User className="w-4 h-4" />
+              </div>
+              <div className="overflow-hidden">
+                <div className="text-xs font-semibold text-slate-200 truncate">
+                  {profile?.full_name || user?.email || 'Authenticated Operator'}
+                </div>
+                {profile?.post_id && (
+                  <div className="text-[10px] font-mono text-emerald-400">
+                    Station: {profile.post_id}
+                  </div>
+                )}
+              </div>
+            </div>
+
+            {/* Role Badge */}
+            <div
+              className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider border ${roleMeta.color}`}
+            >
+              <span className={`w-1.5 h-1.5 rounded-full ${roleMeta.dot}`}></span>
+              <span>{roleMeta.label}</span>
+            </div>
+          </div>
+
+          {/* Nav links (filtered by role) */}
           <nav className="flex-1 px-3 py-4 space-y-1.5 overflow-y-auto">
-            {navItems.map((item) => {
+            {visibleNavItems.map((item) => {
               const Icon = item.icon
               return (
                 <NavLink
@@ -98,17 +193,22 @@ export default function Layout() {
             })}
           </nav>
 
-          {/* System status footer */}
-          <div className="p-4 border-t border-slate-800 bg-slate-950/40">
-            <div className="flex items-center justify-between text-[11px] text-slate-400 mb-1">
+          {/* Sign Out Button & System Status */}
+          <div className="p-4 border-t border-slate-800 bg-slate-950/40 space-y-3">
+            <button
+              onClick={handleSignOut}
+              className="w-full py-2 px-3 bg-slate-800/80 hover:bg-red-950/50 hover:text-red-400 hover:border-red-800/50 border border-slate-700/60 rounded-lg text-xs font-semibold uppercase tracking-wider text-slate-300 flex items-center justify-center gap-2 transition-all duration-300 cursor-pointer"
+            >
+              <LogOut className="w-3.5 h-3.5" />
+              <span>Sign Out</span>
+            </button>
+
+            <div className="flex items-center justify-between text-[11px] text-slate-400 pt-1">
               <span className="flex items-center gap-1.5">
                 <Radio className="w-3.5 h-3.5 text-emerald-400 animate-pulse" />
                 <span>Uplink Status</span>
               </span>
               <span className="font-mono text-emerald-400 font-semibold">SECURE</span>
-            </div>
-            <div className="text-[10px] text-slate-500 font-mono">
-              DEFCON 4 • 99.98% NODE INTEGRITY
             </div>
           </div>
         </aside>
